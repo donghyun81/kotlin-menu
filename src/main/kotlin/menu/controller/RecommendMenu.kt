@@ -1,7 +1,6 @@
 package menu.controller
 
 import menu.model.Category
-import menu.model.Coach
 import menu.model.Menu
 
 abstract class RecommendMenu {

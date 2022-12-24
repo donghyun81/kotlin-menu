@@ -12,7 +12,7 @@ class RecommendService {
     fun execute() {
         outputView.printStart()
         val coachesName = inputView.readCoachesName()
-        var coaches = coachesName.map { coachName ->
+        val coaches = coachesName.map { coachName ->
             val excludedFoods = inputView.readExcludedFoods(coachName)
             Coach(coachName, excludedFoods)
         }

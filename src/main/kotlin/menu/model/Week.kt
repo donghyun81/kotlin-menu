@@ -1,17 +1,12 @@
 package menu.model
 
-class Week {
+enum class Week(private val dayOfWeek: String) {
+    MONDAY("월요일"),
+    TUESDAY("화요일"),
+    WEDNESDAY("수요일"),
+    THURSDAY("목요일"),
+    FRIDAY("금요일");
 
-    private val dayOfWeek = listOf("월요일","화요일","수요일","목요일","금요일")
-    private val categoriesName = mutableListOf<String>()
+    fun getDayOfWeek() = this.dayOfWeek
 
-    fun addCategory(category: String) {
-        if(categoriesName.count { categoryName -> categoryName == category } <= 2) {
-            categoriesName.add(category)
-        }
-    }
-
-    fun getCategories() = categoriesName
-
-    fun getDayOfWeek() = dayOfWeek
 }

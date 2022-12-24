@@ -9,8 +9,8 @@ enum class Category(private val category: String, private val path: String) {
     ASIAN_FOOD("아시안", "/Users/yundonghyeon/kotlin-menu/src/main/kotlin/menu/resource/asian_food.md"),
     WESTERN_FOOD("양식", "/Users/yundonghyeon/kotlin-menu/src/main/kotlin/menu/resource/western_food.md");
 
-    fun getCategoryFoods(): String {
-        return FileReader(this.path).readText()
+    fun getCategoryFoods(): List<String> {
+        return FileReader(this.path).readText().split(", ")
     }
 
     fun getCategoryName(): String {

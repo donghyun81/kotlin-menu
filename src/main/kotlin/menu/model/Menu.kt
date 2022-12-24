@@ -5,11 +5,11 @@ class Menu {
     fun getCategoryMenu(category: String): List<String> {
         var menus = listOf<String>()
         when (category) {
-            "아시안" -> menus = Category.ASIAN_FOOD.getCategoryFoods().split(", ")
-            "중식" -> menus = Category.CHINESE_FOOD.getCategoryFoods().split(", ")
-            "일식" -> menus = Category.JAPANESE_FOOD.getCategoryFoods().split(", ")
-            "한식" -> menus = Category.KOREAN_FOOD.getCategoryFoods().split(", ")
-            "양식" -> menus = Category.WESTERN_FOOD.getCategoryFoods().split(", ")
+            Category.ASIAN_FOOD.getCategoryName() -> menus = Category.ASIAN_FOOD.getCategoryFoods()
+            Category.CHINESE_FOOD.getCategoryName() -> menus = Category.CHINESE_FOOD.getCategoryFoods()
+            Category.JAPANESE_FOOD.getCategoryName() -> menus = Category.JAPANESE_FOOD.getCategoryFoods()
+            Category.KOREAN_FOOD.getCategoryName() -> menus = Category.KOREAN_FOOD.getCategoryFoods()
+            Category.WESTERN_FOOD.getCategoryName() -> menus = Category.WESTERN_FOOD.getCategoryFoods()
         }
         return menus
     }

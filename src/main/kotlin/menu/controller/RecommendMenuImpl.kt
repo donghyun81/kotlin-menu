@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 import menu.model.*
 
 class RecommendMenuImpl(coaches: List<Coach>) : RecommendMenu() {
-    private val week = Week()
+    private val week = RecommendDays()
     private val menu = Menu()
     private val coaches = coaches
     private val randomNumberGenerator = RandomNumberGenerator()
@@ -13,8 +13,8 @@ class RecommendMenuImpl(coaches: List<Coach>) : RecommendMenu() {
         val category = Category.values()
         category.shuffle()
         repeat(week.getDayOfWeek().size) {
-            addRandomCategory(category[0])
-            recommendMenu(category[0], menu)
+            addRandomCategory(category[DEFAULT_INDEX])
+            recommendMenu(category[DEFAULT_INDEX], menu)
         }
 
     }
@@ -24,7 +24,7 @@ class RecommendMenuImpl(coaches: List<Coach>) : RecommendMenu() {
         var categories = week.getCategories().size
         while (categoriesCount == categories) {
             val categoriesName = Category.values().map { category -> category.getCategoryName() }
-            week.addCategory(categoriesName[randomNumberGenerator.generator() - 1])
+            week.addCategory(categoriesName[randomNumberGenerator.generator() - RANDOM_NUMBER_MINUS_INDEX])
             categories = week.getCategories().size
         }
     }
@@ -33,10 +33,7 @@ class RecommendMenuImpl(coaches: List<Coach>) : RecommendMenu() {
         coaches.map { coach ->
             val coachMenusCount = coach.getRecommendedMenus().size
             while (coachMenusCount == coach.getRecommendedMenus().size) {
-                println("멍청이")
-                val menu = Randoms.shuffle(menu.getCategoryMenu(category.getCategoryName()))[0]
-                println(menu)
-                println(coach.getRecommendedMenus())
+                val menu = Randoms.shuffle(menu.getCategoryMenu(category.getCategoryName()))[DEFAULT_INDEX]
                 coach.addRecommendedMenus(menu)
             }
         }
@@ -45,4 +42,9 @@ class RecommendMenuImpl(coaches: List<Coach>) : RecommendMenu() {
     fun getWeek() = week
 
     fun getCoaches() = coaches
+
+    companion object {
+        const val DEFAULT_INDEX = 0
+        const val RANDOM_NUMBER_MINUS_INDEX = 1
+    }
 }

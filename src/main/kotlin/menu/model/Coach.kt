@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class Coach(private val name: String,private val excludeMenus : List<String>) {
 
+
+
     private val recommendedMenus = mutableListOf<String>()
 
     fun getName() = name
